@@ -1,2 +1,2 @@
 # Bin-Packing
-CSCI338 Bin packing assignment
+CSCI-338 Bin packing assignment
