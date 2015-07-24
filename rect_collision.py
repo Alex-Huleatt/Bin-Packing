@@ -24,7 +24,7 @@ def get_overlap( sizes, posns ):
 		rt = block_queue.pop()
 		ln = len(rt)
 		if (ln == 2): #base case
-			if (are_colliding(rt[0][0],rt[0][1],rt[1][0],rt[1][1])):
+			if (are_overlapping(rt[0][0],rt[0][1],rt[1][0],rt[1][1])):
 				return (rt[0],rt[1])
 			continue
 		avg_x,avg_y = posn_queue.pop()
@@ -78,7 +78,7 @@ def to_blocks(rt, avg_x, avg_y):
 
 	return (quads, avg_x_lst, avg_y_lst)
 
-def are_colliding(p1,s1,p2,s2):
+def are_overlapping(p1,s1,p2,s2):
 	'''returns True if the two specified rectangles are overlapping'''
 	ax1,ay1=p1
 	bx1,by1=p2
@@ -112,7 +112,6 @@ def grid_detect(rt):
 			return ret
 	return None
 
-
 def place_rect(r, dx,dy, merp):
 	tx = r[0][0]//dx
 	ty = r[0][1]//dy
@@ -121,7 +120,7 @@ def place_rect(r, dx,dy, merp):
 			p = (tx+i,ty+j)
 			if (p in merp):
 				for t in merp[p]:
-					if are_colliding(r[0],r[1],t[0],t[1]):
+					if are_overlapping(r[0],r[1],t[0],t[1]):
 						return [(r,t)]
 				merp[p].append(r)
 			else:
