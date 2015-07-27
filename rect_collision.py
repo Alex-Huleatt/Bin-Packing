@@ -6,41 +6,50 @@ The naive n**2.
 Takes about ~30 seconds to verify no overlap for 1 million elements.
 This would benefit from multithreading in a non-python language
 ''' 
-import cProfile
 
-def get_overlap( sizes, posns ):
-	'''this returns a single collision in the provided parallel lists, or None if none exist'''
+def get_overlap(sizes, posns):
 	if (len(sizes) != len(posns)):
 		raise ValueError('Length mismatch')
 	if (len(sizes) == 0):
 		return None
-	ret = []
 	rt = []
 	for i in range(len(sizes)):
 		rt.append( (posns[i],sizes[i]) )
-	block_queue = [rt]
-	posn_queue = [sum_posn(rt)]
-	while len(block_queue) != 0:
-		rt = block_queue.pop()
-		ln = len(rt)
-		if (ln == 2): #base case
-			if (are_overlapping(rt[0][0],rt[0][1],rt[1][0],rt[1][1])):
-				return (rt[0],rt[1])
-			continue
-		avg_x,avg_y = posn_queue.pop()
-		quads, avg_x_lst, avg_y_lst = to_blocks(rt,avg_x,avg_y)
-		for i in range(4):
-			b = quads[i]
-			if (len(b) == ln or len(b) < 100):
-				ret = grid_detect(rt)
-				if (ret is not None):
-					return ret
-			else:
-				t_x,t_y = avg_x_lst[i],avg_y_lst[i]
-				if (len(b)>1):
-					block_queue.append(b)
-					posn_queue.append( (t_x/len(b),t_y/len(b)) )
-	return None
+	return grid_detect(rt)
+
+# def get_overlap( sizes, posns ):
+# 	'''this returns a single collision in the provided parallel lists, or None if none exist'''
+# 	if (len(sizes) != len(posns)):
+# 		raise ValueError('Length mismatch')
+# 	if (len(sizes) == 0):
+# 		return None
+# 	ret = []
+# 	rt = []
+# 	for i in range(len(sizes)):
+# 		rt.append( (posns[i],sizes[i]) )
+# 	block_queue = [rt]
+# 	posn_queue = [sum_posn(rt)]
+# 	while len(block_queue) != 0:
+# 		rt = block_queue.pop()
+# 		ln = len(rt)
+# 		if (ln == 2): #base case
+# 			if (are_overlapping(rt[0][0],rt[0][1],rt[1][0],rt[1][1])):
+# 				return (rt[0],rt[1])
+# 			continue
+# 		avg_x,avg_y = posn_queue.pop()
+# 		quads, avg_x_lst, avg_y_lst = to_blocks(rt,avg_x,avg_y)
+# 		for i in range(4):
+# 			b = quads[i]
+# 			if (len(b) == ln or len(b) < 100):
+# 				ret = grid_detect(rt)
+# 				if (ret is not None):
+# 					return ret
+# 			else:
+# 				t_x,t_y = avg_x_lst[i],avg_y_lst[i]
+# 				if (len(b)>1):
+# 					block_queue.append(b)
+# 					posn_queue.append( (t_x/len(b),t_y/len(b)) )
+# 	return None
 
 def sum_posn(lst):
 	avg_x,avg_y = 0.0,0.0
@@ -51,7 +60,7 @@ def sum_posn(lst):
 	return (avg_x/len(lst),avg_y/len(lst))
 
 def to_blocks(rt, avg_x, avg_y):
-	'''this function is responsible for splitting a list of rectangles into quadrants as best as it can. '''
+	'''this function is responsible for splitting a list of rectangles into quadrants as best as it can.'''
 	quads = [ [],[],[],[] ]
 	avg_x_lst = [0.0,0.0,0.0,0.0]
 	avg_y_lst = [0.0,0.0,0.0,0.0]
@@ -78,13 +87,22 @@ def to_blocks(rt, avg_x, avg_y):
 
 	return (quads, avg_x_lst, avg_y_lst)
 
+tested = {}
 def are_overlapping(p1,s1,p2,s2):
+	global tested
+	tup = (p1,s1,p2,s2)
+	tup2 = (p2,s2,p1,s1)
+	if (tup in tested):
+		return tested[tup]
 	'''returns True if the two specified rectangles are overlapping'''
 	ax1,ay1=p1
 	bx1,by1=p2
 	ax2,ay2=ax1+s1[0],ay1+s1[1]
 	bx2,by2=bx1+s2[0],by1+s2[1]
-	return ax1<bx2 and ax2>bx1 and ay1<by2 and ay2>by1
+	b = ax1<bx2 and ax2>bx1 and ay1<by2 and ay2>by1
+	tested[tup] = b
+	tested[tup2] = b
+	return b
 
 def naive_detect(rt):
 	ret = []
@@ -95,6 +113,7 @@ def naive_detect(rt):
 	return None
 
 #Time for this is n**2 * max_width/dx * max_height/dy
+#But this has really good average case
 def grid_detect(rt):
 	if (len(rt) < 10):
 		return naive_detect(rt)
@@ -127,18 +146,4 @@ def place_rect(r, dx,dy, merp):
 				merp[p]=[r]
 	return None
 
-def main():
-	import random
-	random.seed(2)
-	posns = []
-	sizes = []
-	for i in range(10000000):
-		posns.append( (random.randint(0,1000000),random.randint(0,1000000)) )
-		sizes.append( (random.randint(1,1),random.randint(1,1)) )
-
-	print('Generated.')
-	cProfile.runctx('get_overlap(sizes,posns)',{'get_overlap':get_overlap,'sizes':sizes,'posns':posns},{})
-	#print(get_overlap(sizes,posns))
-
-main()
 
