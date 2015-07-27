@@ -17,42 +17,6 @@ def get_overlap(sizes, posns):
 		rt.append( (posns[i],sizes[i]) )
 	return grid_detect(rt)
 
-def sum_posn(lst):
-	avg_x,avg_y = 0.0,0.0
-	for e in lst:
-		p,r = e[0],e[1]
-		avg_x += p[0] + r[0]/2
-		avg_y += p[1] + r[1]/2
-	return (avg_x/len(lst),avg_y/len(lst))
-
-def to_blocks(rt, avg_x, avg_y):
-	'''this function is responsible for splitting a list of rectangles into quadrants as best as it can.'''
-	quads = [ [],[],[],[] ]
-	avg_x_lst = [0.0,0.0,0.0,0.0]
-	avg_y_lst = [0.0,0.0,0.0,0.0]
-	for ele in rt:
-		p,r = ele
-		if (p[0] <= avg_x):
-			if (p[1] <= avg_y):
-				quads[0].append(ele)
-				avg_x_lst[0]+=p[0]+r[0]/2
-				avg_y_lst[0]+=p[1]+r[1]/2
-			if (p[1]+r[1] >= avg_y):
-				quads[3].append(ele)
-				avg_x_lst[3]+=p[0]+r[0]/2
-				avg_y_lst[3]+=p[1]+r[1]/2
-		if (p[0]+r[0] >= avg_x):
-			if (p[1] <= avg_y):
-				quads[1].append(ele)
-				avg_x_lst[1]+=p[0]+r[0]/2
-				avg_y_lst[1]+=p[1]+r[1]/2
-			if (p[1]+r[1] >= avg_y):
-				quads[2].append(ele)
-				avg_x_lst[2]+=p[0]+r[0]/2
-				avg_y_lst[2]+=p[1]+r[1]/2
-
-	return (quads, avg_x_lst, avg_y_lst)
-
 tested = {}
 def are_overlapping(p1,s1,p2,s2):
 	global tested
