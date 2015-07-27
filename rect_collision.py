@@ -17,40 +17,6 @@ def get_overlap(sizes, posns):
 		rt.append( (posns[i],sizes[i]) )
 	return grid_detect(rt)
 
-# def get_overlap( sizes, posns ):
-# 	'''this returns a single collision in the provided parallel lists, or None if none exist'''
-# 	if (len(sizes) != len(posns)):
-# 		raise ValueError('Length mismatch')
-# 	if (len(sizes) == 0):
-# 		return None
-# 	ret = []
-# 	rt = []
-# 	for i in range(len(sizes)):
-# 		rt.append( (posns[i],sizes[i]) )
-# 	block_queue = [rt]
-# 	posn_queue = [sum_posn(rt)]
-# 	while len(block_queue) != 0:
-# 		rt = block_queue.pop()
-# 		ln = len(rt)
-# 		if (ln == 2): #base case
-# 			if (are_overlapping(rt[0][0],rt[0][1],rt[1][0],rt[1][1])):
-# 				return (rt[0],rt[1])
-# 			continue
-# 		avg_x,avg_y = posn_queue.pop()
-# 		quads, avg_x_lst, avg_y_lst = to_blocks(rt,avg_x,avg_y)
-# 		for i in range(4):
-# 			b = quads[i]
-# 			if (len(b) == ln or len(b) < 100):
-# 				ret = grid_detect(rt)
-# 				if (ret is not None):
-# 					return ret
-# 			else:
-# 				t_x,t_y = avg_x_lst[i],avg_y_lst[i]
-# 				if (len(b)>1):
-# 					block_queue.append(b)
-# 					posn_queue.append( (t_x/len(b),t_y/len(b)) )
-# 	return None
-
 def sum_posn(lst):
 	avg_x,avg_y = 0.0,0.0
 	for e in lst:
