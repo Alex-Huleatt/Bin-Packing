@@ -51,6 +51,14 @@ Therefore, we must factor both area and time.
 
 Grading is going to be competitive. We are going to rank everyone based on **the number of passed data files**, tie-broken with **the quality of your solutions**. 
 
+## Using
+
+![](./images/full.gif)
+
+This will be roughly how I test a solution.
+You are welcome to add some code in your solution to automate your own testing process.
+I'd recommend that you test your solution in the shown way at least once before turning it in.
+
 
 ##TL;DR
 
@@ -70,13 +78,6 @@ Grading is going to be competitive. We are going to rank everyone based on **the
 
 
 
-## Using
-
-![](./images/full.gif)
-
-This will be roughly how I test a solution.
-You are welcome to add some code in your solution to automate your own testing process.
-I'd recommend that you test your solution in the shown way at least once before turning it in.
 
 
 
