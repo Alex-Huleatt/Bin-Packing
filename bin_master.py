@@ -37,8 +37,8 @@ def main():
 				lib = loadModule(url, sol_name)
 			except:
 				print('Try again.')
-			failed=test_sol(total_sets, lib)
-			print(sol_name,'passed',total_sets-failed,'of',total_sets)
+			failed,total_area=test_sol(total_sets, lib)
+			print(sol_name,'passed',total_sets-failed,'of',total_sets+'.','Total area:',total_area)
 
 
 def test_sol(num_sets, lib):
@@ -47,6 +47,7 @@ def test_sol(num_sets, lib):
 	keys = ['area','time','valid','passed']
 	failed = 0
 	inc = num_sets/30
+	total_area = 0
 	for i in range(num_sets):
 		if (i % inc < 1):
 			if (not debug and not noprint):
@@ -57,14 +58,17 @@ def test_sol(num_sets, lib):
 		dataset,maxTime = getDataset(i)
 		res,time = run(lib, dataset)
 		area = get_area(dataset, res)
+
 		ver = verify(dataset,res)
 
 		res = dict(zip(keys,(area, time, ver is None, time < maxTime)))
 		if (not res['passed'] or not res['valid']):
 			failed += 1
+		else:
+			total_area += area
 		results.append(res)
 	if(not debug and not noprint):print()
-	return failed
+	return failed,total_area
 
 def prof(func):
 	def wrapper(*args, **kw):

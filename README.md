@@ -27,6 +27,7 @@ Most of us could easily find solutions that are somewhat okay. Try to figure out
 [This code](https://github.com/Alex-Huleatt/Bin-Packing). 
 
 ### You provide
+You will create a Python module with a function named "run" that accepts a single argument consisting of a list of tuples of type (int, int) representing the sizes of *n* rectangles. Your function will return a list of tuples of type (int, int), specifying the positions of the rectangles. See sample_solution.py for an example.
 
 We will run your code with the code provided, you will ensure your program can be successfully called by mine. You can look at the example to see exactly how that works. 
 
