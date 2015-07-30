@@ -1,13 +1,13 @@
-# Bin-Packing
+#Bin-Packing
 CSCI-338 Bin packing assignment
 
-## Packing
+##Packing
 
-### Goal 
+###Goal 
 
-Place a list of rectangles into the smallest area possible, without overlapping. 
+Place a list of rectangles into the smallest area you can manage, as fast as possible, without overlapping. 
 
-### Why
+###Why
 This problem, and its variants are *probably* NP-hard. The NP-Complete variant of *this* problem can be stated as:
 
 "Given a set of rectangles, can they be fit into an area less than or equal to some area **x**?". 
@@ -16,17 +16,17 @@ Because the problem we are providing has a lot more structure than some of the o
 
 The purpose of this assignment is to display the practical concerns with solving difficult and intractable problems. 
 
-### How
+###How
 Make a strategy using heuristics. 
 
 The simplest solution would be placing each rectangle in a single, long, row. This would be faster than any other solution, but would provide a reasonably awful solution most times. 
 
 Most of us could easily find solutions that are somewhat okay. Try to figure out how *you* are capable of doing this; and make a program to do so.
 
-### You need
+###You need
 This code!
 
-### You provide
+###You provide
 You will create a Python module with a function named "run" that accepts a single argument consisting of a list of tuples of type (int, int) representing the (width, height) of *n* rectangles. Your function will return a list of tuples of type (int, int), specifying the (x,y) positions of the rectangles. See sample_solution.py for an example.
 
 I will run your code with the code provided, you will ensure your program can be successfully called by mine. You can look at the example to see exactly how that works. I'll be using standard data sets for grading.
@@ -38,7 +38,7 @@ Because of this you **cannot** rotate rectangles.
 We will validate your results to ensure that no overlapping occurs, otherwise it is not a valid solution.
 
 You are both encouraged and expected to test your solution with the provided code.
-### Grading
+###Grading
 
 We can't grade solely on speed, because that incentivizes terrible solutions.
 
@@ -52,7 +52,7 @@ Therefore, we must factor both area and time.
 
 Grading is going to be competitive. We are going to rank everyone based on **the number of passed data files**, tie-broken with **the quality of your solutions**. 
 
-## Using
+##Usage
 
 ![](./images/full.gif)
 
