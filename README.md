@@ -24,12 +24,12 @@ The simplest solution would be placing each rectangle in a single, long, row. Th
 Most of us could easily find solutions that are somewhat okay. Try to figure out how *you* are capable of doing this; and make a program to do so.
 
 ### You need
-[This code](https://github.com/Alex-Huleatt/Bin-Packing). 
+This code!
 
 ### You provide
-You will create a Python module with a function named "run" that accepts a single argument consisting of a list of tuples of type (int, int) representing the sizes of *n* rectangles. Your function will return a list of tuples of type (int, int), specifying the positions of the rectangles. See sample_solution.py for an example.
+You will create a Python module with a function named "run" that accepts a single argument consisting of a list of tuples of type (int, int) representing the (width, height) of *n* rectangles. Your function will return a list of tuples of type (int, int), specifying the (x,y) positions of the rectangles. See sample_solution.py for an example.
 
-We will run your code with the code provided, you will ensure your program can be successfully called by mine. You can look at the example to see exactly how that works. 
+I will run your code with the code provided, you will ensure your program can be successfully called by mine. You can look at the example to see exactly how that works. I'll be using standard data sets for grading.
 
 Your code will return a list of positions, as tuples, that represent the positions of the rectangles passed in. The n*th* tuple you return is the position of the n*th* rectangle provided. 
 
