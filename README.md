@@ -5,6 +5,14 @@ CSCI-338 Bin packing assignment
 
 ![](./images/full.gif)
 
-Debugging
+To test a solution.
+
+
+##Debugging
+
 
 ![](./images/debug.gif)
+
+
+Gifs were made via [ttygif](https://github.com/icholy/ttygif).
+
