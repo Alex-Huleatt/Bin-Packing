@@ -48,8 +48,15 @@ Therefore, we must factor both area and time.
 * We will run your code on some number of data files.
 * Each data file will have a **maximum allowed time**.
 * You *pass* a data file if the time taken to generate a solution is less than the max time.
-* Data files will get progressively harder to pass.
-* Your grade is based on the number of *passed* data files. 
+
+Grading is going to be competitive. We are going to rank everyone based on **the number of passed data files**, tie-broken with **the quality of your solutions**. 
+
+
+##TL;DR
+
+You want to pass as many data sets as possible, this is the most important thing.
+In the case that someone solves as many as you, whoever has the smaller solutions wins.
+You don't get anything for solving sets *really* fast, so long as you pass. 
 
 [If your code doesn't work.](https://www.youtube.com/watch?v=M5QGkOGZubQ)
 
