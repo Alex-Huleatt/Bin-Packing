@@ -18,7 +18,6 @@ def loadModule(url,sol_name):
 def main():
 	global debug
 	global noprint
-	
 	total_sets = 5
 	while 1:
 		url = input('url:')

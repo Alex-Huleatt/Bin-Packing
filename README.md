@@ -67,13 +67,10 @@ Therefore, we must factor both area and time.
 
 ![](./images/full.gif)
 
-To test a solution.
+This will be roughly how I test a solution.
+You are welcome to add some code in your solution to automate your own testing process.
+I'd recommend that you test your solution in the shown way at least once before turning it in.
 
-
-##Debugging
-
-
-![](./images/debug.gif)
 
 
 Gifs were made via [ttygif](https://github.com/icholy/ttygif).
