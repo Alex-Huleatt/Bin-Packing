@@ -21,13 +21,12 @@ def perfectSplit(width,height,maxWidth,maxHeight):
 		myList.extend(below)
 	return myList
 
+'''randomly produces specified number of rectangles'''
 def randomSplit(count, maxWidth, maxHeight):
 	lst = []
 	for i in range(count):
 		lst.append( (random.randint(1,maxWidth), random.randint(1,maxHeight)) )
 	return lst
-
-
 
 def main():
 	lst = genRects(100,100,20,20)

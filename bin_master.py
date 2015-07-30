@@ -1,22 +1,71 @@
-import sys,importlib,rect_collision,rect_gen,time
+#!/usr/bin/env python3
+
+import sys,importlib,rect_collision,rect_gen,time,urllib.request,shutil,os
+from git import Repo
+
+
+debug,noprint = False,False
+
+def loadModule(url,sol_name):
+	sub = './temp'
+	shutil.rmtree(sub)
+	Repo.clone_from(url, sub)
+	sys.path.append(sub)
+	lib = importlib.import_module(sol_name)
+	sys.path.remove(sub)
+	return lib
 
 def main():
+	global debug
+	global noprint
+	
+	total_sets = 5
+	while 1:
+		url = input('url:')
+		if(url == '$debug'):
+			debug=True
+			noprint=False
+			continue
+		elif(url == '$quit'):
+			break
+		elif(url == '$noprint'):
+			noprint=True
+			debug=False
+			continue
+		else:
+			sol_name = input('Solution name:')
+			try:
+				lib = loadModule(url, sol_name)
+			except:
+				print('Try again.')
+			failed=test_sol(total_sets, lib)
+			print(sol_name,'passed',total_sets-failed,'of',total_sets)
 
-	#number of data sets to use
-	max_num = int(sys.argv[1])
 
-	#this dynamically imports the user's module
-	lib = importlib.import_module(sys.argv[2])
+def test_sol(num_sets, lib):
+	if (debug):print('Testing',lib,'on',num_sets,'sets')
 	results = []
-	for i in range(max_num):
+	keys = ['area','time','valid','passed']
+	failed = 0
+	inc = num_sets/30
+	for i in range(num_sets):
+		if (i % inc < 1):
+			if (not debug and not noprint):
+				ct = int(i//inc)
+				st = '#'*ct+' '*(30-ct-1)+'|'
+				sys.stdout.flush()
+				sys.stdout.write('\r'+st)
 		dataset,maxTime = getDataset(i)
-		print('Starting set:',i)
 		res,time = run(lib, dataset)
-		print('Received solution.')
 		area = get_area(dataset, res)
-		results.append( ('Area:'+str(area), 'Time:'+str(time), 'Valid Solution:'+str(verify(dataset,res))) )
-		print(results[-1])
+		ver = verify(dataset,res)
 
+		res = dict(zip(keys,(area, time, ver is None, time < maxTime)))
+		if (not res['passed'] or not res['valid']):
+			failed += 1
+		results.append(res)
+	if(not debug and not noprint):print()
+	return failed
 
 def prof(func):
 	def wrapper(*args, **kw):
@@ -27,28 +76,32 @@ def prof(func):
 		return (result,elapsed)
 	return wrapper
 
-@prof
 def run(lib, dataset):
-	return lib.run(dataset)
+	if(debug):print('Running user solution.')
+	return prof(lib.run)(dataset)
 
 def get_area(sizes, posns):
 	min_x, min_y = posns[0]
 	max_x, max_y = posns[0]
 	for i in range(len(sizes)):
-		min_x = min(posns[i][0],min_x)
-		min_y = min(posns[i][1],min_y)
-		max_x = max(posns[i][0]+sizes[i][0],max_x)
-		max_y = max(posns[i][1]+sizes[i][1],max_y)
+		min_x,min_y = min(posns[i][0],min_x), min(posns[i][1],min_y)
+		max_x, max_y = max(posns[i][0]+sizes[i][0],max_x),max(posns[i][1]+sizes[i][1],max_y)
 	return (max_x - min_x) * (max_y - min_y)
 
 def getDataset(num):
-	sizes = rect_gen.perfectSplit(1000,1000,20,20)
-	maxTime = 100000000.0
+	if(debug):print('Getting dataset', num)
+
+	sizes = rect_gen.randomSplit(10000,100,100)
+	maxTime = 4
 	return (sizes,maxTime)
 
 def verify(sizes, posns):
-	return rect_collision.get_overlap(sizes,posns) is None
+	if(debug):print('Checking for collisions.')
 
+	collision,time = prof(rect_collision.get_overlap)(sizes,posns)
+
+	if(debug):print('Collision:',(collision,time))
+	return collision
 
 
 if __name__ == '__main__':
