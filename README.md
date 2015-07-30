@@ -63,9 +63,11 @@ I'd recommend that you test your solution in the shown way at least once before 
 
 ##TL;DR
 
+* Give each of *n* rectangles an intenger position, such that they do no overlap.
+* Do it fast.
+* Use as little space as possible. 
 * You want to pass as many data sets as possible, this is the most important thing.
-* In the case that someone solves as many as you, whoever has the smaller solutions wins.
-* You don't get anything for solving a set *really* fast, so long as you pass it. 
+* In the case that someone solves as many as you, whoever has the smaller solutions wins. 
 
 [If your code doesn't work.](https://www.youtube.com/watch?v=M5QGkOGZubQ)
 

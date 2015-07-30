@@ -7,7 +7,7 @@ from git import Repo
 debug,noprint = False,False
 
 def loadModule(url,sol_name):
-	sub = './temp'
+	sub = './temp/'
 	shutil.rmtree(sub)
 	Repo.clone_from(url, sub)
 	sys.path.append(sub)
@@ -35,10 +35,12 @@ def main():
 			sol_name = input('Solution name:')
 			try:
 				lib = loadModule(url, sol_name)
+				failed,total_area=test_sol(total_sets, lib)
+				print(sol_name,'passed',total_sets-failed,'of',total_sets+' sets.','Total area:',total_area)
 			except:
+				print(sys.exc_info())
 				print('Try again.')
-			failed,total_area=test_sol(total_sets, lib)
-			print(sol_name,'passed',total_sets-failed,'of',total_sets+'.','Total area:',total_area)
+			
 
 
 def test_sol(num_sets, lib):
