@@ -46,8 +46,8 @@ We can't grade solely on smallest area, because that incentivizes taking till th
 Therefore, we must factor both area and time.
 
 * We will run your code on some number of data files.
-* Each data file will have a **maximum allowed area** and a **maximum allowed time**.
-* You *pass* a data file if **both** your area and time are less than the maximum allowed, otherwise you *fail*. 
+* Each data file will have a **maximum allowed time**.
+* You *pass* a data file if the time taken to generate a solution is less than the max time.
 * Data files will get progressively harder to pass.
 * Your grade is based on the number of *passed* data files. 
 
