@@ -18,7 +18,7 @@ def loadModule(url,sol_name):
 def main():
 	global debug
 	global noprint
-	total_sets = 5
+	total_sets = 100
 	while 1:
 		url = input('url:')
 		if(url == '$debug'):
@@ -36,7 +36,7 @@ def main():
 			try:
 				lib = loadModule(url, sol_name)
 				failed,total_area=test_sol(total_sets, lib)
-				print(sol_name,'passed',total_sets-failed,'of',total_sets+' sets.','Total area:',total_area)
+				print(sol_name,'passed',total_sets-failed,'of',total_sets,'sets.','Total area:',total_area)
 			except:
 				print(sys.exc_info())
 				print('Try again.')
