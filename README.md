@@ -59,7 +59,7 @@ If you solve only 1 of them with a **fantastic** solution, you *still* get a bad
 
 We want you to pass a *bunch* of them with *pretty good* solutions.
 
-
+The reason for this is that it is realistic. If you were expected to solve this for a job, they don't want to you to take 100 million years to get a really good solution, nor do they probably want you to give them the worst answer possible *right now*.
 ##Usage
 
 ![](./images/full.gif)
