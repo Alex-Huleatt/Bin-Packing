@@ -49,7 +49,7 @@ Therefore, we must factor both area and time.
 * We will run your code on some number of data files.
 * Each data file will have a **maximum allowed time**.
 * You *pass* a data file if the time taken to generate a solution is less than the max time.
-* If you don't pass a data file, that is fine! At the end we calculate the **average** size of your solutions and add **2X** that for each missed file. 
+* If you don't pass a data file, that is fine! At the end we calculate the **average** size of your solutions and add **2x** that for each missed file. 
 
 What does this mean?
 
@@ -62,7 +62,7 @@ We want you to pass a *bunch* of them with *pretty good* solutions.
 The reason for this is that it is realistic. If you were expected to solve this for a job, they don't want to you to take 100 million years to get a really good solution, nor do they probably want you to give them the worst answer possible *right now*.
 ##Usage
 
-![](./images/full.gif)
+!["No joke this was easy to make. Check out the bottom of this to see the tool I used."](./images/full.gif)
 
 This will be roughly how I test a solution.
 You are welcome to add some code in your solution to automate your own testing process.
