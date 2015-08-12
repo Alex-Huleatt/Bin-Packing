@@ -49,8 +49,16 @@ Therefore, we must factor both area and time.
 * We will run your code on some number of data files.
 * Each data file will have a **maximum allowed time**.
 * You *pass* a data file if the time taken to generate a solution is less than the max time.
+* If you don't pass a data file, that is fine! At the end we calculate the **average** size of your solutions and add **2X** that for each missed file. 
 
-Grading is going to be competitive. We are going to rank everyone based on **the number of passed data files**, tie-broken with **the quality of your solutions**. 
+What does this mean?
+
+This means that if you solve every data file with awful solutions, you get a bad score.
+
+If you solve only 1 of them with a **fantastic** solution, you *still* get a bad score.
+
+We want you to pass a *bunch* of them with *pretty good* solutions.
+
 
 ##Usage
 
