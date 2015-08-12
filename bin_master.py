@@ -8,7 +8,8 @@ debug,noprint = False,False
 
 def loadModule(url,sol_name):
 	sub = './temp/'
-	shutil.rmtree(sub)
+	if (os.path.exists(sub)):
+		shutil.rmtree(sub)
 	Repo.clone_from(url, sub)
 	sys.path.append(sub)
 	lib = importlib.import_module(sol_name)
@@ -33,13 +34,10 @@ def main():
 			continue
 		else:
 			sol_name = input('Solution name:')
-			try:
-				lib = loadModule(url, sol_name)
-				failed,total_area=test_sol(total_sets, lib)
-				print(sol_name,'passed',total_sets-failed,'of',total_sets,'sets.','Total area:',total_area)
-			except:
-				print(sys.exc_info())
-				print('Try again.')
+			lib = loadModule(url, sol_name)
+			failed,total_area=test_sol(total_sets, lib)
+			score = -1 if (failed==total_sets) else (total_area+2*(total_area/(total_sets-failed))*failed) 
+			print(sol_name,'passed',total_sets-failed,'of',total_sets,'sets.','Total area:',total_area,"Score:",score)
 			
 
 
@@ -95,10 +93,10 @@ def get_area(sizes, posns):
 
 def getDataset(num):
 	if(debug):print('Getting dataset', num)
-
 	sizes = rect_gen.randomSplit(10000,100,100)
 	maxTime = 4
 	return (sizes,maxTime)
+
 
 def verify(sizes, posns):
 	if(debug):print('Checking for collisions.')
