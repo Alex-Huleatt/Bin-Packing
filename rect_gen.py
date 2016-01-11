@@ -2,7 +2,6 @@ import random
 
 
 '''let's have a method that splits a big rectangle into a list of rectangles recursively'''
-'''Producing a rectangle creates 2 new areas that need to be filled'''
 def perfectSplit(width,height,maxWidth,maxHeight):
 	if (width < 1 or height < 1):
 		return []

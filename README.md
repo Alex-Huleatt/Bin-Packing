@@ -6,6 +6,7 @@ CSCI-338 Bin packing assignment
 ###Goal 
 
 Place a list of rectangles into the smallest area you can manage, as fast as possible, without overlapping. 
+TLDR at the bottom.
 
 ###Why
 This problem, and its variants are *probably* NP-hard. The NP-Complete variant of *this* problem can be stated as:
@@ -55,18 +56,11 @@ What does this mean?
 
 This means that if you solve every data file with awful solutions, you get a bad score.
 
-If you solve only 1 of them with a **fantastic** solution, you *still* get a bad score.
+If you solve only 1 of them with a **fantastic** solution, you get a bad score.
 
 We want you to pass a *bunch* of them with *pretty good* solutions.
 
 The reason for this is that it is realistic. If you were expected to solve this for a job, they don't want to you to take 100 million years to get a really good solution, nor do they probably want you to give them the worst answer possible *right now*.
-##Usage
-
-!["No joke this was easy to make. Check out the bottom of this to see the tool I used."](./images/full.gif)
-
-This will be roughly how I test a solution.
-You are welcome to add some code in your solution to automate your own testing process.
-I'd recommend that you test your solution in the shown way at least once before turning it in.
 
 
 ##TL;DR
@@ -86,11 +80,4 @@ I'd recommend that you test your solution in the shown way at least once before 
 * https://en.wikipedia.org/wiki/Heuristic
 * https://en.wikipedia.org/wiki/Bin_packing_problem
 
-
-
-
-
-
-
-Gifs were made via [ttygif](https://github.com/icholy/ttygif).
 
