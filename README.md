@@ -50,7 +50,7 @@ Therefore, we must factor both area and time.
 * We will run your code on some number of data files.
 * Each data file will have a **maximum allowed time**.
 * You *pass* a data file if the time taken to generate a solution is less than the max time.
-* If you don't pass a data file, that is fine! At the end we calculate the **average** size of your solutions and add **2x** that for each missed file. 
+* The way we will determine the *quality* of your solution is by comparing it to the rest of the class's solutions.
 
 What does this mean?
 
@@ -62,6 +62,7 @@ We want you to pass a *bunch* of them with *pretty good* solutions.
 
 The reason for this is that it is realistic. If you were expected to solve this for a job, they don't want to you to take 100 million years to get a really good solution, nor do they probably want you to give them the worst answer possible *right now*.
 
+The specifics for grading are on Paxton's site.
 
 ##TL;DR
 
