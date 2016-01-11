@@ -15,10 +15,10 @@ This problem, and its variants are *probably* NP-hard. The NP-Complete variant o
 
 Because the problem we are providing has a lot more structure than some of the other NP-hard problems, it is actually possible that you could exploit the structure to solve this quickly, but I somewhat doubt it. 
 
-The purpose of this assignment is to display the practical concerns with solving difficult and intractable problems. 
+The purpose of this assignment is to display the practical concerns of solving difficult and intractable problems. 
 
 ###How
-Make a strategy using heuristics. 
+Invent some strategy to hopefully do better than some crap solution.
 
 The simplest solution would be placing each rectangle in a single, long, row. This would be faster than any other solution, but would provide a reasonably awful solution most times. 
 
@@ -51,6 +51,7 @@ Therefore, we must factor both area and time.
 * Each data file will have a **maximum allowed time**.
 * You *pass* a data file if the time taken to generate a solution is less than the max time.
 * The way we will determine the *quality* of your solution is by comparing it to the rest of the class's solutions.
+* You also fail a set if any of your rectangles are overlapping.
 
 What does this mean?
 

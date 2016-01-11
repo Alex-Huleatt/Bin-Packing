@@ -81,13 +81,12 @@ def test_sol(sets, lib):
 
         result = run_solution(lib, sizes, max_time)
 
-        if (result['passed']):
+        if (result['passed'] && verify(sizes,result['posns'])):
             total_area += get_area(sizes, result['posns'])
         else:
             failed += 1
     print()
     return {'area':total_area, 'failed':failed}
-
 
 
 def get_area(sizes, posns):
