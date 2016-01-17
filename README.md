@@ -18,8 +18,8 @@ Because the problem we are providing has a lot more structure than some of the o
 The purpose of this assignment is to display the practical concerns of solving difficult and intractable problems. 
 
 This problem is legit an actual real world problem. 
-* ["In game development."](http://gamedev.stackexchange.com/questions/2829/texture-packing-algorithm)
-* ["Or just a random question on StackOverflow"](http://stackoverflow.com/questions/1213394/algorithm-needed-for-packing-rectangles-in-a-fairly-optimal-way)
+* [In game development.](http://gamedev.stackexchange.com/questions/2829/texture-packing-algorithm)
+* [Or just a random question on StackOverflow](http://stackoverflow.com/questions/1213394/algorithm-needed-for-packing-rectangles-in-a-fairly-optimal-way)
 
 ###How
 Invent some strategy to hopefully do better than some crap solution.
