@@ -33,7 +33,7 @@ def grid_detect(rt):
 		axs,ays=m[1]
 		for k in rects[m]: #every *smaller* rectangle nearby, we don't need to compare to larger ones.
 			bx1,by1=k[0]
-			if (ax1<(bx1+k[1][0]) and (ax1+axs)>bx1 and ay1<(by1+k[1][1]) and (ay1+ays)>by1): #inlined for speed
+			if (ax1<(bx1+k[1][0]) and (ax1+axs)>bx1 and ay1<(by1+k[1][1]) and (ay1+ays)>by1): 
 				return (m,k)
 	return None
 
