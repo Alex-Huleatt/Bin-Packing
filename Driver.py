@@ -1,8 +1,13 @@
 
-import sys,importlib,rect_collision,rect_gen,time,urllib.request,shutil,os,threading, visualizer
+import sys,importlib,rect_collision,rect_gen,time,urllib.request,shutil,os,threading,visualizer
 
+try:
+    import visualizer
+except ImportError:
+    global can_visualize
+    can_visualize=False
 
-
+can_visualize=True
 def main():
 
     default_name = "AlexSolution"
@@ -27,8 +32,20 @@ def main():
             num_sets=default_set_count
         else:
             num_sets = int(num_sets)
+        if (can_visualize):
+            while (True):
+                visual = input("Visualize? y/n: ")
+                if (visual == 'y'):
+                    visual = True
+                    break
+                elif (visual=='n'):
+                    visual = False
+                    break
+                else:
+                    print("That was not y or n, try again.")
 
-        bench_result, sol_result = compare_solutions(bench_lib, lib, num_sets)
+
+        bench_result, sol_result = compare_solutions(bench_lib, lib, num_sets, visual=visual)
         print("Benchmark:",bench_result)
         print(name+":",sol_result)
         print('Ratio:',sol_result['area']/bench_result['area'])
@@ -37,11 +54,11 @@ def loadModule(sol_name):
     lib = importlib.import_module(sol_name)
     return lib
 
-def compare_solutions(lib1, lib2, num_sets):
+def compare_solutions(lib1, lib2, num_sets, visual=False):
     sets = []
     for i in range(num_sets):
         sets.append(getDataset(i))
-    return test(sets, lib1, lib2, visual=True)
+    return test(sets, lib1, lib2, visual)
 
 
 
@@ -57,7 +74,7 @@ def run_solution(lib, dataset, max_time, visual=False):
     t.start()
     t.join(max_time)
 
-    #if visual:visualizer.visualize(dataset,res['posns'])
+    if visual:visualizer.visualize(dataset,res['posns'])
 
     return res
 
