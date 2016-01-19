@@ -1,5 +1,5 @@
 
-import sys,importlib,rect_collision,rect_gen,time,urllib.request,shutil,os,threading,visualizer
+import sys,importlib,rect_collision,rect_gen,time,urllib.request,shutil,os,threading
 
 try:
     import visualizer
