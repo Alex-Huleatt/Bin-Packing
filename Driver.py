@@ -3,11 +3,12 @@ import sys,importlib,rect_collision,rect_gen,time,urllib.request,shutil,os,threa
 
 try:
     import visualizer
+    can_visualize=True
 except ImportError:
     global can_visualize
     can_visualize=False
 
-can_visualize=True
+can_visualize=False
 def main():
 
     default_name = "AlexSolution"
