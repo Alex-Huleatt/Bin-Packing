@@ -5,34 +5,40 @@ try:
     import visualizer
     can_visualize=True
 except ImportError:
-    global can_visualize
     can_visualize=False
 
-can_visualize=False
-def main():
 
-    default_name = "AlexSolution"
+def main():
+    global can_visualize
+    module1_name_default = "bin_packing"
+    module2_name_default = "sample_solution"
     default_set_count = 10
-    benchmark_solution = "sample_solution"
-    bench_lib = loadModule(benchmark_solution)
 
     while (True):
         
-        name = input("Module name: ")
+        name = input("Module 1 name (default: "+module1_name_default+".py): ")
 
         if (len(name)==0):
-            name = default_name
+            name = module1_name_default
 
         if (name == '$quit'):
             return
 
-        lib = loadModule(name)
-        num_sets = input("Number sets: ")
+        lib1 = load_module(name)
+        name = input("Module 2 name (default: "+module2_name_default+".py): ")
+
+        if (len(name)==0):
+            name = module2_name_default
+
+        
+        lib2 = load_module(name)
+        num_sets = input("Number sets(default: "+str(default_set_count)+"): ")
 
         if (len(num_sets)==0):
             num_sets=default_set_count
         else:
             num_sets = int(num_sets)
+        visual=False
         if (can_visualize):
             while (True):
                 visual = input("Visualize? y/n: ")
@@ -46,19 +52,19 @@ def main():
                     print("That was not y or n, try again.")
 
 
-        bench_result, sol_result = compare_solutions(bench_lib, lib, num_sets, visual=visual)
-        print("Benchmark:",bench_result)
-        print(name+":",sol_result)
-        print('Ratio:',sol_result['area']/bench_result['area'])
+        lib1_result, lib2_result = compare_solutions(lib1, lib2, num_sets, visual=visual)
+        print("Module 1:",lib1_result)
+        print("Module 2:",lib2_result)
+        print('Average ratio:',lib1_result['area']/lib2_result['area'])
 
-def loadModule(sol_name):
+def load_module(sol_name):
     lib = importlib.import_module(sol_name)
     return lib
 
 def compare_solutions(lib1, lib2, num_sets, visual=False):
     sets = []
     for i in range(num_sets):
-        sets.append(getDataset(i))
+        sets.append(get_dataset(i))
     return test(sets, lib1, lib2, visual)
 
 
@@ -121,7 +127,7 @@ def test(sets, lib1, lib2, visual=False):
 
 
         if (l1_passed and l2_passed):
-            print("Both passed set",i, 'L1:',l1_ar,'L2:',str(l2_ar)+".",'% improvement',str(100*(1 - l2_ar/l1_ar)))
+            print("Both passed set",i, 'L1:',l1_ar,'L2:',str(l2_ar)+".",'% improvement',str(100*(1 - l1_ar/l2_ar)))
 
     return (lib1_results,lib2_results)
 
@@ -134,7 +140,7 @@ def get_area(sizes, posns):
         max_x, max_y = max(posns[i][0]+sizes[i][0],max_x),max(posns[i][1]+sizes[i][1],max_y)
     return 2*((max_x - min_x) + (max_y - min_y))
 
-def getDataset(num):
+def get_dataset(num):
     sizes = rect_gen.randomSplit(1000,500,500)
     maxTime = 60
     return (sizes,maxTime)
