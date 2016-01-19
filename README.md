@@ -94,11 +94,9 @@ The specifics for grading are on Paxton's site.
 
 * To test a solution, you run driver.py
 * It will ask for the name of one module with a solution, and then for another. Then it will ask for the number of datasets to run on. 
-
 * driver.py has default values for loading modules and the number of datasets to use.
     * Just pressing enter will run these defaults.
     * If you feel the need to have different defaults, they are defined at the top of driver.py.
-
 * If you have pyglet installed for python 3, you will be prompted for if you want to display a graphical representation of the two solutions' packings.
     * Getting the visualizer working is in the next section.
     * I find it very useful for figuring out why solutions are not functioning as intended. 
