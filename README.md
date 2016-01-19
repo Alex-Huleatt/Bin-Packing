@@ -3,9 +3,11 @@ CSCI-338 Bin packing assignment
 
 ##Packing
 
+This problem is **much** more closely related to the *strip packing problem*. If one were to, say, want to google keywords for ideas, that *might* return better results.
+
 ###Goal 
 
-Place a list of rectangles into the smallest area you can manage, as fast as possible, without overlapping. 
+Place a list of rectangles into the smallest bounding box (measured by *perimeter*, not area) you can manage, as fast as possible, without overlapping. 
 TLDR at the bottom.
 
 ###Why
@@ -32,7 +34,7 @@ Most of us could easily find solutions that are somewhat okay. Try to figure out
 This code!
 
 ###You provide
-You will create a Python module with a function named "run" that accepts a single argument consisting of a list of tuples of type (int, int) representing the (width, height) of *n* rectangles. Your function will return a list of tuples of type (int, int), specifying the (x,y) positions of the rectangles. See sample_solution.py for an example.
+You will create a Python module with a function named "find\_solution" that accepts a single argument consisting of a list of tuples of type (int, int) representing the (width, height) of *n* rectangles. Your function will return a list of tuples of type (int, int), specifying the (x,y) positions of the rectangles. See sample_solution.py for an example.
 
 I will run your code with the code provided, you will ensure your program can be successfully called by mine. You can look at the example to see exactly how that works. I'll be using standard data sets for grading.
 
@@ -73,7 +75,7 @@ The specifics for grading are on Paxton's site.
 
 * Give each of *n* rectangles an intenger position, such that they do no overlap.
 * Do it fast.
-* Use as little space as possible. 
+* Pack it as tightly as possible.
 * You want to pass as many data sets as possible, this is the most important thing.
 * In the case that someone solves as many as you, whoever has the smaller solutions wins. 
 
@@ -83,7 +85,8 @@ The specifics for grading are on Paxton's site.
 
 ## Links
 
-* https://en.wikipedia.org/wiki/Heuristic
-* https://en.wikipedia.org/wiki/Bin_packing_problem
+* [Heuristics](https://en.wikipedia.org/wiki/Heuristic)
+* [Bin packing](https://en.wikipedia.org/wiki/Bin_packing_problem)
+* [Packing problems](https://en.wikipedia.org/wiki/Packing_problems)
 
 

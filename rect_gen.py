@@ -10,7 +10,6 @@ def perfectSplit(width,height,maxWidth,maxHeight):
 	#all rectangles are at (0,0), the issue will be solved by caller function
 	thisRect = (new_width,new_height)
 	myList = [thisRect]
-
 	toRight = perfectSplit(width-new_width,height,maxWidth,maxHeight)
 	if (len(toRight) > 0):
 		myList.extend(toRight)

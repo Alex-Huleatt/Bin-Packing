@@ -42,7 +42,7 @@ def compare_solutions(lib1, lib2, num_sets):
     for i in range(num_sets):
 
         sets.append(getDataset(i))
-    result1=test_sol(sets, lib1)
+    result1=test_sol(sets, lib1, visual=True)
     result2=test_sol(sets, lib2, visual=True)
     return result1, result2
 
@@ -54,13 +54,13 @@ Creates a new thread so that I can time out the functions
 def run_solution(lib, dataset, max_time, visual=False):
     res = {'posns':[], 'passed':False}
     def helper(res):
-        res['posns']=lib.run(dataset)
+        res['posns']=lib.find_solution(dataset)
         res['passed']=True
     t = threading.Thread(target=helper,args=(res,))
     t.start()
     t.join(max_time)
 
-    if visual:visualizer.visualize(dataset,res['posns'])
+    #if visual:visualizer.visualize(dataset,res['posns'])
 
     return res
 
@@ -93,10 +93,10 @@ def get_area(sizes, posns):
     for i in range(len(sizes)):
         min_x,min_y = min(posns[i][0],min_x), min(posns[i][1],min_y)
         max_x, max_y = max(posns[i][0]+sizes[i][0],max_x),max(posns[i][1]+sizes[i][1],max_y)
-    return 2*(max_x - min_x) + 2* (max_y - min_y)
+    return (max_x - min_x) * (max_y - min_y)
 
 def getDataset(num):
-    sizes = rect_gen.randomSplit(1000,500,500)
+    sizes = rect_gen.randomSplit(10000,500,500)
     maxTime = 60
     return (sizes,maxTime)
 
