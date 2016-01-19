@@ -90,3 +90,11 @@ The specifics for grading are on Paxton's site.
 * [Packing problems](https://en.wikipedia.org/wiki/Packing_problems)
 
 
+## About the visualizer
+
+* You don't need this, it's just for fun.
+* The only dependency for the visualizer is Pyglet for python 3. 
+* Pyglet has no dependencies of its own, so a nice "sudo pip3 install pyglet" will work for Mac (and possibly linux users).
+* For Windows users, I pity you. Also, pip is located in the install directory of python. If you can run command prompt in that directory, you too can install pip.
+
+
