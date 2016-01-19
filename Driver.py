@@ -40,11 +40,8 @@ def loadModule(sol_name):
 def compare_solutions(lib1, lib2, num_sets):
     sets = []
     for i in range(num_sets):
-
         sets.append(getDataset(i))
-    result1=test_sol(sets, lib1, visual=True)
-    result2=test_sol(sets, lib2, visual=True)
-    return result1, result2
+    return test(sets, lib1, lib2, visual=True)
 
 
 
@@ -64,27 +61,51 @@ def run_solution(lib, dataset, max_time, visual=False):
 
     return res
 
+def run_set(lib1, lib2, dataset, visual=False):
+    sizes =dataset[0]
+    max_time = dataset[1]
+
+    result1 = run_solution(lib1, sizes, max_time, visual)
+    result2 = run_solution(lib2, sizes, max_time, visual)
+    return result1,result2
+
+
 
 '''
 Given a list of sets and a module, tests all the sets
 '''
-def test_sol(sets, lib, visual=False):
+def test(sets, lib1, lib2, visual=False):
     failed = 0
     total_area = 0.0
     inc = len(sets)/30
+    lib1_results = {"area":0.0,"failed":0}
+    lib2_results = {"area":0.0,"failed":0}
+
     for i in range(len(sets)):
-        sizes = sets[i][0]
-        max_time = sets[i][1]
-
-        result = run_solution(lib, sizes, max_time, visual)
-        if (result['passed'] and verify(sizes,result['posns'])):
-            total_area += get_area(sizes, result['posns'])
-            print('Passed:',i)
+        l1_passed = False
+        l2_passed = False
+        l1_ar = 0.0
+        l2_ar = 0.0
+        result1, result2 = run_set(lib1, lib2, sets[i], visual)
+        if (result1['passed'] and verify(sets[i][0],result1['posns'])):
+            l1_ar=get_area(sets[i][0], result1['posns'])
+            lib1_results['area']+=l1_ar
+            l1_passed=True
         else:    
-            print('Fail')
-            failed += 1
+            lib2_results['failed']+=1
 
-    return {'area':total_area, 'failed':failed}
+        if (result2['passed'] and verify(sets[i][0],result2['posns'])):
+            l2_ar=get_area(sets[i][0], result2['posns'])
+            lib2_results['area']+=l2_ar
+            l2_passed=True
+        else:    
+            lib2_results['failed']+=1
+
+
+        if (l1_passed and l2_passed):
+            print("Both passed set",i, 'L1:',l1_ar,'L2:',str(l2_ar)+".",'% improvement',str(100*(1 - l2_ar/l1_ar)))
+
+    return (lib1_results,lib2_results)
 
 
 def get_area(sizes, posns):
@@ -93,10 +114,10 @@ def get_area(sizes, posns):
     for i in range(len(sizes)):
         min_x,min_y = min(posns[i][0],min_x), min(posns[i][1],min_y)
         max_x, max_y = max(posns[i][0]+sizes[i][0],max_x),max(posns[i][1]+sizes[i][1],max_y)
-    return (max_x - min_x) * (max_y - min_y)
+    return 2*((max_x - min_x) + (max_y - min_y))
 
 def getDataset(num):
-    sizes = rect_gen.randomSplit(10000,500,500)
+    sizes = rect_gen.randomSplit(1000,500,500)
     maxTime = 60
     return (sizes,maxTime)
 
