@@ -141,6 +141,9 @@ def get_area(sizes, posns):
     return 2*((max_x - min_x) + (max_y - min_y))
 
 def get_dataset(num):
+     #generate 1,000 rectangles
+     #widths in the range [1,500]
+     #heights in the range [1,500]
     sizes = rect_gen.randomSplit(1000,500,500)
     maxTime = 60
     return (sizes,maxTime)
