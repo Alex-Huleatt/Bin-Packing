@@ -22,7 +22,7 @@ This problem is legit an actual real world problem.
 * [Or just a random question on StackOverflow](http://stackoverflow.com/questions/1213394/algorithm-needed-for-packing-rectangles-in-a-fairly-optimal-way)
 
 ##How
-Invent some strategy to hopefully do better than some crap solution.
+Invent some strategy to hopefully do better than some awful solution.
 
 The simplest solution would be placing each rectangle in a single, long, row. This would be faster than any other solution, but would provide a reasonably awful solution most times. 
 

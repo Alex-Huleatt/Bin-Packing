@@ -16,7 +16,7 @@ def main():
 
     while (True):
         
-        name = input("Module 1 name (default: "+module1_name_default+".py): ")
+        name = input("Module 1 name (default: "+module1_name_default+"): ")
 
         if (len(name)==0):
             name = module1_name_default
@@ -25,7 +25,7 @@ def main():
             return
 
         lib1 = load_module(name)
-        name = input("Module 2 name (default: "+module2_name_default+".py): ")
+        name = input("Module 2 name (default: "+module2_name_default+"): ")
 
         if (len(name)==0):
             name = module2_name_default
@@ -96,7 +96,7 @@ def run_set(lib1, lib2, dataset, visual=False):
 
 
 '''
-Given a list of sets and a module, tests all the sets
+Given a list of sets and two modules, tests all the sets
 '''
 def test(sets, lib1, lib2, visual=False):
     failed = 0
@@ -128,6 +128,8 @@ def test(sets, lib1, lib2, visual=False):
 
         if (l1_passed and l2_passed):
             print("Both passed set",i, 'L1:',l1_ar,'L2:',str(l2_ar)+".",'% improvement',str(100*(1 - l1_ar/l2_ar)))
+        else:
+            print("Module 1 passed:",l1_passed,", Module 2 passed:", l2_passed)
 
     return (lib1_results,lib2_results)
 
@@ -144,8 +146,8 @@ def get_dataset(num):
      #generate 1,000 rectangles
      #widths in the range [1,500]
      #heights in the range [1,500]
-    sizes = rect_gen.randomSplit(1000,500,500)
-    maxTime = 60
+    sizes = rect_gen.randomSplit(10000,500,500)
+    maxTime = 5 #just a constant time I guess.
     return (sizes,maxTime)
 
 

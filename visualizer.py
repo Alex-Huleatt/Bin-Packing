@@ -6,11 +6,11 @@ def generateRandomColor(mix):
     green = (random.randint(0,256)+mix[1])/2
     blue = (random.randint(0,256)+mix[2])/2
     
-    return (red/255.0, green/255.0, blue/255.0,.5)
+    return (red/255.0, green/255.0, blue/255.0,1)
 
 def visualize(sizes, posns):
 
-    win = ez.Win()
+    win = ez.Win(caption="visualizer")
     width, height = win.width, win.height
     min_x, max_x, min_y, max_y = getSolDim(sizes,posns)
 
@@ -27,7 +27,7 @@ def visualize(sizes, posns):
         x,y = (posns[i][0] - min_x) / mul, height - (posns[i][1]-min_y)/mul
 
         w,h = sizes[i][0] / mul, sizes[i][1] / mul
-        win.add( ez.Polygon(v=[(x,y), (x+w,y), (x+w,y-h), (x,y-h)], color=generateRandomColor( (200,200,200) ), style=GLU_FILL) )
+        win.add( ez.Polygon(v=[(x,y), (x+w,y), (x+w,y-h), (x,y-h)], color=generateRandomColor( (50,50,50) ), style=GLU_FILL) )
 
     ez.runWin()
 
