@@ -1,9 +1,7 @@
-#Bin-Packing Assignment w/ Solution
+#Bin-Packing
 CSCI-338 Bin packing assignment
 
-This is the problem solution created by Matthew Rohrlach. Please see the original that this was forked from for a fresh copy.
-
-Original text follows:
+This problem is **much** more closely related to the *strip packing problem*. If one were to, say, want to google keywords for ideas, that *might* return better results.
 
 ##Goal 
 
