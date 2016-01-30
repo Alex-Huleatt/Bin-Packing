@@ -1,5 +1,5 @@
 
-import sys,importlib,rect_collision,rect_gen,time,urllib.request,shutil,os,threading
+import sys,importlib,rect_collision,rect_gen,time,urllib.request,shutil,os,threading,random
 
 try:
     import visualizer
@@ -11,7 +11,7 @@ except ImportError:
 def main():
     global can_visualize
     module1_name_default = "bin_packing"
-    module2_name_default = "sample_solution"
+    module2_name_default = "naive_solution"
     default_set_count = 10
 
     while (True):
@@ -143,11 +143,12 @@ def get_area(sizes, posns):
     return 2*((max_x - min_x) + (max_y - min_y))
 
 def get_dataset(num):
-     #generate 1,000 rectangles
-     #widths in the range [1,500]
-     #heights in the range [1,500]
-    sizes = rect_gen.randomSplit(1000,500,500)
-    maxTime = 5 #just a constant time I guess.
+     #generate (1000,10000) rectangles
+     #widths in the range [1,1000]
+     #heights in the range [1,1000]
+    numRectangles = random.randint(1000,10000)
+    sizes = rect_gen.randomSplit(numRectangles,1000,1000)
+    maxTime = 60
     return (sizes,maxTime)
 
 
