@@ -146,7 +146,7 @@ def get_dataset(num):
      #generate (1000,10000) rectangles
      #widths in the range [1,1000]
      #heights in the range [1,1000]
-    numRectangles = random.randint(50000,50000)
+    numRectangles = random.randint(100,100)
     #sizes = rect_gen.perfectSplit(1000,1000,500,500)
     sizes = rect_gen.randomSplit(numRectangles,1000,1000)
     #sizes = rect_gen.highVariance(numRectangles,1000,1000)

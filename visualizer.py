@@ -6,7 +6,7 @@ def generateRandomColor(mix):
     green = (random.randint(0,256)+mix[1])/2
     blue = (random.randint(0,256)+mix[2])/2
     
-    return (red/255.0, green/255.0, blue/255.0,1)
+    return (red/255.0, green/255.0, blue/255.0,.75)
 
 def visualize(sizes, posns):
 
