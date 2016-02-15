@@ -14,7 +14,7 @@ def get_overlap(sizes, posns):
 	return grid_detect(rt)
 
 '''
-This is a pretty neat rectangle collision detection function I made.
+This is a pretty neat rectangle collision detection function.
 Note: I did not invent this system or anything. It is a well known technique.
 It overlays a grid over the rectangles and checks to see if any cell has more than one rectangle in it.
 Then we do the naive overlap check on any rectangles which share a cell.

@@ -1,5 +1,5 @@
 
-import sys,importlib,rect_collision,rect_gen,time,urllib.request,shutil,os,threading,random,collision
+import sys,importlib,rect_collision,rect_gen,time,urllib.request,shutil,os,threading,random
 
 try:
     import visualizer
