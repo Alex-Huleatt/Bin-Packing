@@ -18,8 +18,8 @@ rectangles: a list of tuples, e.g. [(w1, l1), ... (wn, ln)] where
     l1 = length of rectangle 1, etc.
 --------------------------------------------------
 RETURNS: a list of tuples that designate the top left corner placement,
-         e.g. [(x1, y1), ... (xn, yn)] where
-         x1 = top left x coordinate of rectangle 1 placement
+             e.g. [(x1, y1), ... (xn, yn)] where
+             x1 = top left x coordinate of rectangle 1 placement
 """
 
 def find_solution (rectangles):   
@@ -28,11 +28,11 @@ def find_solution (rectangles):
     upper_left_y = 0
     
     for rectangle in rectangles:
-        width = rectangle[0]
-        coordinate = (upper_left_x, upper_left_y)   # make a tuple
-        placement.insert(0, coordinate)             # insert tuple at front of list
-        upper_left_x = upper_left_x + width
-        
-    placement.reverse()                             # original order
+            width = rectangle[0]
+            coordinate = (upper_left_x, upper_left_y)   # make a tuple
+            placement.insert(0, coordinate)                     # insert tuple at front of list
+            upper_left_x = upper_left_x + width
+            
+    placement.reverse()                                                 # original order
 
     return placement
