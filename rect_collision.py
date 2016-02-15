@@ -32,12 +32,12 @@ def grid_detect(rt):
     return None
 
 def place_rect(r, dx, dy, merp):
-    tx = r[0][0]//dx
-    ty = r[0][1]//dy
+    tx = r[0][0]//dx #initial x
+    ty = r[0][1]//dy #initial y
     i = tx
-    while i * dx <= r[0][0] + r[1][0]: 
+    while i <= r[1][0]//dx: 
         j = ty
-        while j * dy <= r[0][1] + r[1][1]:
+        while j <= r[1][1]//dy:
             p = (i,j)
             if (p in merp): #usually this shouldn't get hit, hopefully.
                 for t in merp[p]: #for each rect in this cell, compare.
@@ -55,9 +55,13 @@ def intersecting(r1, r2):
     global inter_count
     inter_count+=1
     #print(r1,r2)
-    return not (
-         r1[0][0] >= r2[0][0] + r2[1][0]
-      or r2[0][0] >= r1[0][0] + r1[1][0]
-      or r1[0][1] >= r2[0][1] + r2[1][1] 
-      or r2[0][1] >= r1[0][1] + r1[1][1])
+    return not(r1[0][0]+r1[1][0] <= r2[0][0] 
+        or r1[0][0]+r1[1][0] <= r2[0][0] 
+        or r1[0][1]+r1[1][1] >= r2[0][0]
+        or r1[0][1]+r1[1][1] >= r2[0][1])
+#(0,0,959,-798), (571,0,1204,-116)
+r1 = ( (0,0), (959, -798) )
+r2 = ( (571, 0), (1204-571, -116))
+
+print(intersecting(r1,r2))
 
