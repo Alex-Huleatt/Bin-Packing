@@ -26,6 +26,20 @@ def randomSplit(count, maxWidth, maxHeight):
 		lst.append( (random.randint(1,maxWidth), random.randint(1,maxHeight)) )
 	return lst
 
+def highVariance(count, maxWidth, maxHeight):
+	lst = []
+	for i in range(count):
+
+		lst.append( (varianceInt(1,maxWidth), varianceInt(1,maxHeight)) )
+	return lst
+
+def varianceInt(lo, hi):
+	start = random.randint(lo,hi)
+	highest = hi**(hi**.2)
+	start = start**(start**.2)
+	start = (start - lo)/(highest-lo)
+	return start * (hi-lo)
+
 def main():
 	lst = genRects(100,100,20,20)
 	print(lst)

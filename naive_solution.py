@@ -34,4 +34,5 @@ def find_solution (rectangles):
         upper_left_x = upper_left_x + width
         
     placement.reverse()                             # original order
+
     return placement

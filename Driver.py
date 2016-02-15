@@ -1,5 +1,5 @@
 
-import sys,importlib,rect_collision,rect_gen,time,urllib.request,shutil,os,threading,random
+import sys,importlib,rect_collision,rect_gen,time,urllib.request,shutil,os,threading,random,collision
 
 try:
     import visualizer
@@ -146,17 +146,23 @@ def get_dataset(num):
      #generate (1000,10000) rectangles
      #widths in the range [1,1000]
      #heights in the range [1,1000]
-    numRectangles = random.randint(1000,10000)
+    numRectangles = random.randint(50000,50000)
+    #sizes = rect_gen.perfectSplit(1000,1000,500,500)
     sizes = rect_gen.randomSplit(numRectangles,1000,1000)
-    maxTime = 60
+    #sizes = rect_gen.highVariance(numRectangles,1000,1000)
+
+    maxTime = 600
     return (sizes,maxTime)
 
 
 def verify(sizes, posns):
-    collision = rect_collision.get_overlap(sizes,posns)
-    if (collision is not None):
-        print('Collisions:',collision)
-    return collision is None
+    print("starting collision detect.")
+    #coll, err =  collision.sweep(sizes,posns)
+    coll = rect_collision.get_overlap(sizes,posns)
+    print("Done collision detect.")
+    if (coll is not None):
+        print('Collisions:',coll)
+    return coll is None
 
 
 main()

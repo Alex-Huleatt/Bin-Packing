@@ -38,5 +38,3 @@ def getSolDim(sizes, posns):
         min_x,min_y = min(posns[i][0],min_x), min(posns[i][1],min_y)
         max_x, max_y = max(posns[i][0]+sizes[i][0],max_x),max(posns[i][1]+sizes[i][1],max_y)
     return ( min_x, max_x, min_y, max_y )
-
-
