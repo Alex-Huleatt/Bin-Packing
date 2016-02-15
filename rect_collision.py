@@ -26,18 +26,16 @@ def grid_detect(rt):
     avg_h = statistics.median([s[1][1] for s in rt])
     merp={}
     for r in rt: # n
-        coll = place_rect(r,avg_w/3,avg_h/3, merp)
+        coll = place_rect(r,avg_w*3,avg_h*3, merp)
         if coll is not None:
-            print(inter_count)
             return coll
-    print(inter_count)
     return None
 
 def place_rect(r, dx, dy, merp):
     tx = r[0][0]//dx
     ty = r[0][1]//dy
     i = tx
-    while i * dx <= r[0][0] + r[1][0]:
+    while i * dx <= r[0][0] + r[1][0]: 
         j = ty
         while j * dy <= r[0][1] + r[1][1]:
             p = (i,j)
