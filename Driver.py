@@ -1,5 +1,5 @@
 
-import sys,importlib,rect_collision,rect_gen,time,urllib.request,shutil,os,threading,random
+import sys,importlib,rect_collision,rect_gen,time,shutil,os,threading,random
 
 try:
     import visualizer
@@ -91,12 +91,6 @@ def run_set(lib1, lib2, dataset, visual=False):
 
     result1 = run_solution(lib1, sizes, max_time, visual)
     result2 = run_solution(lib2, sizes, max_time, visual)
-    f = open("out.txt", "w")
-    for i in range(len(sizes)):
-        posn = result1['posns'][i]
-        sz = sizes[i]
-        st = str(posn[0]) + ',' + str(posn[1]) + ',' + str(sz[0]) + ','+str(sz[1])
-        f.write(st+'\n')
     return result1,result2
 
 
@@ -152,7 +146,7 @@ def get_dataset(num):
     #generate (1000,10000) rectangles
     #widths in the range [1,1000]
     #heights in the range [1,1000]
-    numRectangles = random.randint(10000,10000)
+    numRectangles = random.randint(9400,9400)
     #sizes = rect_gen.perfectSplit(1000,1000,500,500)
     #sizes = rect_gen.randomSplit(numRectangles,1000,1000)
     #sizes = rect_gen.highVariance(numRectangles,1000,1000)
