@@ -30,7 +30,7 @@ def grid_detect(rt):
         coll = place_rect(r,avg_w*3,avg_h*3, merp)
         if coll is not None:
             return coll
-    print(inter_count)
+    #print(inter_count)
     return None
 
 def place_rect(r, dx, dy, merp):
